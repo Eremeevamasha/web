@@ -1,0 +1,29 @@
+{% load extra_filters %}
+
+<h1>Мои заказы</h1>
+
+{% if orders %}
+    <ul>
+        {% for order in orders %}
+            <li>
+                <strong>Заказ №{{ order.id }}</strong> от {{ order.created_at|date:"d F Y" }} ({{ order.total_price }} ₽)
+
+                <h3>Состав заказа:</h3>
+                <ul>
+                    {% for item in order.items.all %}
+                        <li>
+                            {{ item.book.name }} - {{ item.quantity }} шт. ({{ item.book.price }} ₽ за единицу)
+                            Стоимость: {{ item.quantity|multiply:item.book.price }} ₽
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Вы ещё не делали заказов.</p>
+{% endif %}
+
+<a href="{% url 'book_list' %}">
+    <button>Вернуться на главную</button>
+</a>

@@ -1,0 +1,49 @@
+<h1>Редактирование профиля</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <!-- Форма редактирования профиля -->
+    <div class="form-group">
+        <label for="id_username">Имя пользователя</label>
+        {{ profile_form.username }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_first_name">Имя</label>
+        {{ profile_form.first_name }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_last_name">Фамилия</label>
+        {{ profile_form.last_name }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_email">Электронная почта</label>
+        {{ profile_form.email }}
+    </div>
+
+    <!-- Кнопка для сохранения изменений профиля -->
+    <button type="submit" name="save_profile" class="btn btn-primary">Сохранить изменения профиля</button>
+</form>
+
+<hr>
+
+<h2>Изменение пароля</h2>
+<form method="POST">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="id_new_password1">Новый пароль</label>
+        {{ password_form.new_password1 }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_new_password2">Подтверждение пароля</label>
+        {{ password_form.new_password2 }}
+    </div>
+
+    <!-- Кнопка для изменения пароля -->
+    <button type="submit" name="change_password" class="btn btn-primary">Изменить пароль</button>
+</form>

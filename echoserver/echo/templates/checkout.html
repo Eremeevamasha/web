@@ -1,0 +1,6 @@
+<h1>Подтвердите заказ</h1>
+<p>Общая стоимость: {{ cart.get_total_price }} ₽</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Оформить заказ</button>
+</form>
